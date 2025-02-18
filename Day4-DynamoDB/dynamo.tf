@@ -2,10 +2,17 @@ provider "aws" {
     region = "us-east-1"
 }
 
- resource "aws_s3_bucket" "name" {
-  bucket = "testttt291996"
+ #resource "aws_s3_bucket" "name" {
+ #bucket = "testttt9999"
   
- }
+ #}
+
+ resource "aws_s3_bucket_versioning" "versioning" {
+  bucket = "testttt291996"
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
 
 resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
   name = "terraform-state-lock-dynamo"

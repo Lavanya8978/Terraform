@@ -1,6 +1,6 @@
 # Create key pair
 resource "aws_key_pair" "example" {
-  key_name   = "taskk"  # Replace with your desired key name
+  key_name   = "devopkey"  # Replace with your desired key name
   public_key = file("~/.ssh/id_rsa.pub")
 }
 
@@ -19,8 +19,8 @@ resource "aws_iam_policy" "s3_access_policy" {
         ]
         Effect   = "Allow"
         Resource = [
-          "arn:aws:s3:::multicloudnareshitveera",
-          "arn:aws:s3:::multicloudnareshitveera/*"
+          "arn:aws:s3:::testttt291996",
+          "arn:aws:s3:::testttt291996/*"
         ]
       }
     ]
@@ -57,7 +57,7 @@ resource "aws_iam_instance_profile" "ec2_instance_profile" {
 
 # EC2 instance with IAM instance profile attached
 resource "aws_instance" "web_server" {
-  ami                  = "ami-085ad6ae776d8f09c" # Update with a valid AMI ID
+  ami                  = "ami-05b10e08d247fb927" # Update with a valid AMI ID
   instance_type        = "t2.micro"
   key_name             = aws_key_pair.example.key_name
   security_groups      = ["default"]
@@ -89,7 +89,7 @@ resource "null_resource" "setup_and_upload" {
       "echo '<h1>Welcome to My Web Server</h1>' | sudo tee /var/www/html/index.html",
 
       # Upload the file to S3
-      "aws s3 cp /var/www/html/index.html s3://multicloudnareshitveera/",
+      "aws s3 cp /var/www/html/index.html s3://testttt291996/",
       "echo 'File uploaded to S3'"
     ]
   }

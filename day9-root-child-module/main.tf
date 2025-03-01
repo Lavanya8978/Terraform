@@ -4,10 +4,10 @@ provider "aws" {
 
 module "ec2_instance" {
   source        = "./modules/ec2"
-  instance_type = string
+  instance_type = var.instance_type
 }
 
  module "s3_bucket" {
    source      = "./modules/s3"
-   bucket_name = "myterraformbucket12345"
+   bucket_name = "test737819"
  }
